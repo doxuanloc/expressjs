@@ -22,8 +22,15 @@ app.get("/todos/search", (req, res) =>{
   })
   res.render('todos/index', {
     todos: findTodo
-  })
+  });
 });
+app.get('/todos/create', (req, res) =>{
+        res.render('/todos/create')
+});
+app.post('/todos/create', (req,res) =>{
+  todos.push(req.todos);
+  res.redirect('/todos')
+})
 
 app.listen(3000,  () => {
   console.log("Server listening on port " + port);
