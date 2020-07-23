@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser')
 app.set("view engine", "pug");
 app.set("views", "./views");
-
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 const port = 3000;
 var todos = ['Đi chợ', 'nấu cơm', 'Rửa Bát', 'Học code tại CoderX'];
 
@@ -28,7 +30,7 @@ app.get('/todos/create', (req, res) =>{
         res.render('/todos/create')
 });
 app.post('/todos/create', (req,res) =>{
-  todos.push(req.todos);
+  todos.push(req.body);
   res.redirect('/todos')
 })
 
