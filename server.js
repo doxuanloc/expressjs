@@ -30,7 +30,7 @@ app.get('/todos/create', (req, res) =>{
         res.render('/todos/create')
 });
 app.post('/todos/create', (req,res) =>{
-  todos.push(req.body);
+  todos.push(req.body.todo);
   res.redirect('/todos')
 })
 
